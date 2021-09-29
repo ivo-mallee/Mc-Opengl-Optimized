@@ -18,7 +18,10 @@ uniform mat4 camMatrix;
 uniform int ChunkID;
 uniform int Xvalues[1024];
 uniform int Zvalues[1024];
-  
+uniform float PlayerX;
+uniform float PlayerY;
+uniform float PlayerZ;
+uniform int ObjInfo;
 
 
 
@@ -26,7 +29,7 @@ uniform int Zvalues[1024];
 
 void main()
 {
-	
+
 
 
 
@@ -45,9 +48,16 @@ void main()
 	vec3 aPos;
 	
 
-	aPos = vec3(Values[0]*2,Values[1]*2,Values[2]*2);
 
-	aPos = aPos + Offset*2;
+	
+
+if (ObjInfo ==0) {	aPos = vec3(Values[0]*2,Values[1]*2,Values[2]*2); aPos = aPos + Offset*2;} //if its a normal cube
+if (ObjInfo ==1) {	aPos = vec3(Values[0]*2000,Values[1]*2000,Values[2]*2000); } //if its a skybox Cube
+
+	 if (PlayerX ==1 && PlayerY == 1 && PlayerZ ==1 && ObjInfo == 1) {aPos = vec3(535.0,352.0,533.0);}	
+
+
+	
 
 	vec2 aTex = vec2(0.0625*(Values[3]+1),0.0625*(Values[4]+1));
 	

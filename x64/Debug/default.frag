@@ -13,9 +13,8 @@ in vec3 test;
 
 uniform sampler2D tex0;
 
-
 void main()
 {
 	 FragColor = texture(tex0, texCoord)/test.x;
-	  //FragColor = vec4(color.x,color.y,color.z,255);
+	  //FragColor = vec4(255,255,255,255);
 }

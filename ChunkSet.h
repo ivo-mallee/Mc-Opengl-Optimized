@@ -7,16 +7,7 @@ class ChunkSet {
 
 
 	//converts 4,8,4,4,4,8 bit value's into a singular integer
-	unsigned int  ConvertTo(unsigned char X, unsigned char Y, unsigned char Z, unsigned char TX, unsigned char TY, unsigned char LightLevel)
-	{
-		unsigned int T = Y | X << 8 | Z << 12 | TX << 16 | TY << 20 | LightLevel << 24;
 
-
-
-
-
-		return T;
-	} 
 	
 	
 		//adds the vertices and indices to referenced arrays. takes a 4,8,4 bit value, and then a SIDES object which constains the sides to be added
@@ -165,6 +156,16 @@ class ChunkSet {
 public:          
 	Chunk SET[32][32];
 
+	unsigned int  ConvertTo(unsigned char X, unsigned char Y, unsigned char Z, unsigned char TX, unsigned char TY, unsigned char LightLevel)
+	{
+		unsigned int T = Y | X << 8 | Z << 12 | TX << 16 | TY << 20 | LightLevel << 24;
+
+
+
+
+
+		return T;
+	}
 
 	int VOffset = 0;
 	int IOffset = 0;

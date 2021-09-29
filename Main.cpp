@@ -35,7 +35,11 @@ GLint ZarrayForShader[1024];
 GLint UniformChunkIdID;
 GLint XarrayId;
 GLint ZarrayId;
-Camera camera(width, height, glm::vec3(0.0f, 400.0f, -10.0f));
+GLuint PlayerXArrayId;
+GLuint PlayerYArrayId;
+GLuint PlayerZArrayId;
+GLuint ObjInfoId;
+Camera camera(width, height, glm::vec3(0.0f, 0, 10.0f));
 
 
 void CheckForRemeshFlags(ChunkSet &WorldSet, GLuint (&indices)[300000],GLuint (&vertices)[1572864],VBO (&VBO1A)[1024],EBO (&EBO1A)[1024],VAO (&VAO1)[1024])
@@ -185,18 +189,23 @@ void remeshThread()
 }
 
 
+
+//checks the mesh queue and updates the Vbos and Ebos
 void CheckMeshQueue()
 {
+	//if we have remeshed zero objects and if the RemeshThread is actually done
 	if (ObjectRemeshed != 0 && RemeshThreadDone == true)
 	{
+		//loop through all the remeshed objects
 		for (int i = 0; i < ObjectRemeshed; i++)
 		{
+			//get our Array Offset
 			int arrayOffset = RemeshObjectSet[i].ArrayOffset;
-			VAO1[arrayOffset].Bind(); //problem when multithreading
+			VAO1[arrayOffset].Bind(); 
 
-
+			//fills the offset array with the required values
 			IOffsetArray[arrayOffset] = RemeshObjectSet[i].Ioffset;
-			// Generates Vertex Buffer Object and links it to vertices
+			
 
 			VBO1A[arrayOffset].Set(RemeshObjectSet[i].vertices, RemeshObjectSet[i].Voffset * 4);
 			// Generates Element Buffer Object and links it to indices
@@ -212,24 +221,124 @@ void CheckMeshQueue()
 			ZarrayForShader[arrayOffset] = RemeshObjectSet[i].LocY;
 		}
 		ObjectRemeshed = 0;
-		RemeshThreadDone = false;
-		glUniform1iv(XarrayId, 1024, XarrayForShader);
+		RemeshThreadDone = false; //we handled the chunk Queue and we can now give the remesh thread the green light to keep going again
+		glUniform1iv(XarrayId, 1024, XarrayForShader); //update our Offset Arrays for the Vertex Shader
 		glUniform1iv(ZarrayId, 1024, ZarrayForShader);
 
 	}
+}
 
 
+void GenerateSkyBoxCube(VBO& REFVBO, VAO& REFVAO, EBO& REFEBO, int &INDICOFFSET)
+{
+	int VertexOffset = 0;
+	int INDICOffset = 0;
+	GLuint SkyBoxVertex[24];
+	GLuint SkyBoxIndices[36];
+
+
+	SkyBoxVertex[VertexOffset + 0] = WorldSet.ConvertTo(0 + 0, 0 + 0, 1 + 0, 0, 0, 1); //FRONT
+	SkyBoxVertex[VertexOffset + 1] = WorldSet.ConvertTo(1 + 0, 0 + 0, 1 + 0, 15, 0, 1);
+	SkyBoxVertex[VertexOffset + 2] = WorldSet.ConvertTo(0 + 0, 1 + 0, 1 + 0, 0, 15, 1);
+	SkyBoxVertex[VertexOffset + 3] = WorldSet.ConvertTo(1 + 0, 1 + 0, 1 + 0, 15, 15, 1);
+	SkyBoxIndices[INDICOffset + 0] = VertexOffset + 0;
+	SkyBoxIndices[INDICOffset + 1] = VertexOffset + 1;
+	SkyBoxIndices[INDICOffset + 2] = VertexOffset + 3;
+	SkyBoxIndices[INDICOffset + 3] = VertexOffset + 0;
+	SkyBoxIndices[INDICOffset + 4] = VertexOffset + 3;
+	SkyBoxIndices[INDICOffset + 5] = VertexOffset + 2;
+	VertexOffset += 4;
+	INDICOffset += 6;
+	SkyBoxVertex[VertexOffset + 0] = WorldSet.ConvertTo(0 + 0, 0 + 0, 0 + 0, 0, 0, 1); //bottom
+	SkyBoxVertex[VertexOffset + 1] = WorldSet.ConvertTo(1 + 0, 0 + 0, 0 + 0, 15, 0, 1);
+	SkyBoxVertex[VertexOffset + 2] = WorldSet.ConvertTo(0 + 0, 0 + 0, 1 + 0, 0, 15, 1);
+	SkyBoxVertex[VertexOffset + 3] = WorldSet.ConvertTo(1 + 0, 0 + 0, 1 + 0, 15, 15, 1);
+	SkyBoxIndices[INDICOffset + 0] = VertexOffset + 0;
+	SkyBoxIndices[INDICOffset + 1] = VertexOffset + 1;
+	SkyBoxIndices[INDICOffset + 2] = VertexOffset + 3;
+	SkyBoxIndices[INDICOffset + 3] = VertexOffset + 0;
+	SkyBoxIndices[INDICOffset + 4] = VertexOffset + 3;
+	SkyBoxIndices[INDICOffset + 5] = VertexOffset + 2;
+	VertexOffset += 4;
+	INDICOffset += 6;
+
+
+
+	SkyBoxVertex[VertexOffset + 0] = WorldSet.ConvertTo(0 + 0, 1 + 0, 0 + 0, 15, 15, 1); //BACK
+	SkyBoxVertex[VertexOffset + 1] = WorldSet.ConvertTo(1 + 0, 1 + 0, 0 + 0, 0, 15, 1);
+	SkyBoxVertex[VertexOffset + 2] = WorldSet.ConvertTo(0 + 0, 0 + 0, 0 + 0, 15, 0, 1);
+	SkyBoxVertex[VertexOffset + 3] = WorldSet.ConvertTo(1 + 0, 0 + 0, 0 + 0, 0, 0, 1);
+	SkyBoxIndices[INDICOffset + 0] = VertexOffset + 0;
+	SkyBoxIndices[INDICOffset + 1] = VertexOffset + 1;
+	SkyBoxIndices[INDICOffset + 2] = VertexOffset + 3;
+	SkyBoxIndices[INDICOffset + 3] = VertexOffset + 0;
+	SkyBoxIndices[INDICOffset + 4] = VertexOffset + 3;
+	SkyBoxIndices[INDICOffset + 5] = VertexOffset + 2;
+	VertexOffset += 4;
+	INDICOffset += 6;
+
+
+	SkyBoxVertex[VertexOffset + 0] = WorldSet.ConvertTo(1 + 0, 1 + 0, 0 + 0, 15, 15, 1); //TOP
+	SkyBoxVertex[VertexOffset + 1] = WorldSet.ConvertTo(0 + 0, 1 + 0, 0 + 0, 0, 15, 1);
+	SkyBoxVertex[VertexOffset + 2] = WorldSet.ConvertTo(1 + 0, 1 + 0, 1 + 0, 15, 0, 1);
+	SkyBoxVertex[VertexOffset + 3] = WorldSet.ConvertTo(0 + 0, 1 + 0, 1 + 0, 0, 0, 1);
+	SkyBoxIndices[INDICOffset + 0] = VertexOffset + 0;
+	SkyBoxIndices[INDICOffset + 1] = VertexOffset + 1;
+	SkyBoxIndices[INDICOffset + 2] = VertexOffset + 3;
+	SkyBoxIndices[INDICOffset + 3] = VertexOffset + 0;
+	SkyBoxIndices[INDICOffset + 4] = VertexOffset + 3;
+	SkyBoxIndices[INDICOffset + 5] = VertexOffset + 2;
+	VertexOffset += 4;
+	INDICOffset += 6;
+	SkyBoxVertex[VertexOffset + 0] = WorldSet.ConvertTo(1 + 0, 0 + 0, 1 + 0, 0, 0, 1); //right
+	SkyBoxVertex[VertexOffset + 1] = WorldSet.ConvertTo(1 + 0, 0 + 0, 0 + 0, 15, 0, 1);
+	SkyBoxVertex[VertexOffset + 2] = WorldSet.ConvertTo(1 + 0, 1 + 0, 1 + 0, 0, 15, 1);
+	SkyBoxVertex[VertexOffset + 3] = WorldSet.ConvertTo(1 + 0, 1 + 0, 0 + 0, 15, 15, 1);
+	SkyBoxIndices[INDICOffset + 0] = VertexOffset + 0;
+	SkyBoxIndices[INDICOffset + 1] = VertexOffset + 1;
+	SkyBoxIndices[INDICOffset + 2] = VertexOffset + 3;
+	SkyBoxIndices[INDICOffset + 3] = VertexOffset + 0;
+	SkyBoxIndices[INDICOffset + 4] = VertexOffset + 3;
+	SkyBoxIndices[INDICOffset + 5] = VertexOffset + 2;
+	VertexOffset += 4;
+	INDICOffset += 6;
+	SkyBoxVertex[VertexOffset + 0] = WorldSet.ConvertTo(0 + 0, 0 + 0, 1 + 0, 15, 0, 1); //(Left Still has problem with culling needs FIX)
+	SkyBoxVertex[VertexOffset + 1] = WorldSet.ConvertTo(0 + 0, 0 + 0, 0 + 0, 0, 0, 1);
+	SkyBoxVertex[VertexOffset + 2] = WorldSet.ConvertTo(0 + 0, 1 + 0, 1 + 0, 15, 15, 1);
+	SkyBoxVertex[VertexOffset + 3] = WorldSet.ConvertTo(0 + 0, 1 + 0, 0 + 0, 0, 15, 1);
+	SkyBoxIndices[INDICOffset + 0] = VertexOffset + 0;
+	SkyBoxIndices[INDICOffset + 1] = VertexOffset + 1;
+	SkyBoxIndices[INDICOffset + 2] = VertexOffset + 3;
+	SkyBoxIndices[INDICOffset + 3] = VertexOffset + 0;
+	SkyBoxIndices[INDICOffset + 4] = VertexOffset + 3;
+	SkyBoxIndices[INDICOffset + 5] = VertexOffset + 2;
+	VertexOffset += 4;
+	INDICOffset += 6;
+
+
+	REFVAO.Bind();
+	REFVBO.Set(SkyBoxVertex, VertexOffset * 4);
+	// Generates Element Buffer Object and links it to indices
+	REFEBO.Set(SkyBoxIndices, INDICOffset * 6);
+	// Links VBO attributes such as coordinates and colors to VAO
+	REFVAO.LinkAttrib(REFVBO, 0, 1, GL_INT, 1 * sizeof(GLuint), (void*)0);
+	REFVAO.Unbind();
+	INDICOFFSET = INDICOffset;
 
 }
 
 
 int main() 
 {	
-
-
 	
+
+
+
+
 	WorldSet.INIT();
 	
+		
+
 
 	
 	initGeneration();
@@ -274,6 +383,17 @@ int main()
 	}
 	
 
+
+	
+	
+	int SkyBoxOffsetINDC;
+	VAO SkyBoxVAO;
+	SkyBoxVAO.SET();
+	VBO SkyBoxVBO;
+	EBO SkyBoxEBO;
+	GenerateSkyBoxCube(SkyBoxVBO, SkyBoxVAO, SkyBoxEBO, SkyBoxOffsetINDC);
+
+
 	
 	
 	UniformChunkIdID = glGetUniformLocation(shaderProgram.ID, "ChunkID");
@@ -281,11 +401,25 @@ int main()
 	XarrayId = glGetUniformLocation(shaderProgram.ID, "Xvalues");
 	ZarrayId = glGetUniformLocation(shaderProgram.ID, "Zvalues");
 
-	std::string TextureFolder = (fs::current_path().string() + "\\TEXTURE.png");
+	PlayerXArrayId = glGetUniformLocation(shaderProgram.ID, "PlayerX");
+	PlayerYArrayId = glGetUniformLocation(shaderProgram.ID, "PlayerY");
+	PlayerZArrayId = glGetUniformLocation(shaderProgram.ID, "PlayerZ");
+	ObjInfoId = glGetUniformLocation(shaderProgram.ID, "ObjInfo");
+	
 
 
-	Texture textureAtlas(TextureFolder.c_str(), GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
+
+	std::string AtlasTextureDir = (fs::current_path().string() + "\\TEXTURE.png");
+
+
+	Texture textureAtlas(AtlasTextureDir.c_str(), GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
 	textureAtlas.texUnit(shaderProgram, "tex0", 0);
+
+	std::string GeckTextureDir = (fs::current_path().string() + "\\geck.png");
+
+
+	Texture GeckTex(GeckTextureDir.c_str(), GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
+	GeckTex.texUnit(shaderProgram, "tex0", 0);
 
 
 	
@@ -319,7 +453,10 @@ int main()
 		// Clean the back buffer and depth buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
-		
+
+		glUniform1f(PlayerXArrayId, camera.Position.x);
+		glUniform1f(PlayerYArrayId, camera.Position.y);
+		glUniform1f(PlayerZArrayId, camera.Position.z);
 
 
 
@@ -339,16 +476,33 @@ int main()
 		camera.Matrix(45.0f, 0.1f, 2000.0f, shaderProgram, "camMatrix");
 
 		// Binds texture so that is appears in rendering
-		textureAtlas.Bind();
-		
+		//textureAtlas.Bind();
+		GeckTex.Bind();
 		
 		// Draw primitives, number of indices, datatype of indices, index of indices
+		
+
+
+		glUniform1i(ObjInfoId, 0);
+		
+
 		for (int i = 0; i < 1024; i++) {
 			glUniform1i(UniformChunkIdID, i);
 			VAO1[i].Bind(); // Bind the VAO so OpenGL knows to use it
 			glDrawElements(GL_TRIANGLES, IOffsetArray[i] * 6 / sizeof(int), GL_UNSIGNED_INT, 0);
 			VAO1[i].Unbind(); //unbind the VAO
 		}
+		
+
+
+		SkyBoxVAO.Bind();
+		glUniform1i(ObjInfoId, 1);
+		glDrawElements(GL_TRIANGLES, SkyBoxOffsetINDC * 6 / sizeof(int), GL_UNSIGNED_INT, 0);
+
+
+
+
+
 		// Swap the back buffer with the front buffer
 		glfwSwapBuffers(window);
 		// Take care of all GLFW events

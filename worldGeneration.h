@@ -23,7 +23,7 @@ void NormalGeneration(int X,int Z, Chunk &TargetChunk)
 
 	
 	int Scale = 200; //the higher the less pointy the terrain is
-	int multiplier = 10;
+	int multiplier = 100;
 	double T = abs(myModule.GetValue((double)(X + (TargetChunk.ChunkX * 15)) / Scale, (double)(Z + (TargetChunk.ChunkY * 15)) / Scale, 255));
 	int i = T * multiplier;
 	if (i > 150) { i = 150; std::cout << "BUILD LIMIT REACHED"; }
