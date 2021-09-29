@@ -1,28 +1,31 @@
 ﻿  Main.cpp
-C:\Users\ivo\Desktop\McProject\worldGeneration.h(25,8): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\ivo\Desktop\McProject\worldGeneration.h(46,10): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\ivo\Desktop\McProject\worldGeneration.h(48,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\ivo\Desktop\McProject\ChunkSet.h(295,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\ivo\Desktop\McProject\Main.cpp(134,10): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\ivo\Desktop\McProject\Main.cpp(135,10): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\ivo\Desktop\Mc-Opengl-Optimized\worldGeneration.h(28,8): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\ivo\Desktop\Mc-Opengl-Optimized\worldGeneration.h(50,10): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\ivo\Desktop\Mc-Opengl-Optimized\worldGeneration.h(52,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\ivo\Desktop\Mc-Opengl-Optimized\ChunkSet.h(300,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\ivo\Desktop\Mc-Opengl-Optimized\Main.cpp(134,10): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\ivo\Desktop\Mc-Opengl-Optimized\Main.cpp(135,10): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   LibNoise64.lib(modulebase.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
 LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Generating code
   Finished generating code
-glfw3.lib(context.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(context.obj)' or at 'C:\Users\ivo\Desktop\McProject\x64\Debug\glfw.pdb'; linking object as if no debug info
-glfw3.lib(init.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(init.obj)' or at 'C:\Users\ivo\Desktop\McProject\x64\Debug\glfw.pdb'; linking object as if no debug info
-glfw3.lib(input.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(input.obj)' or at 'C:\Users\ivo\Desktop\McProject\x64\Debug\glfw.pdb'; linking object as if no debug info
-glfw3.lib(monitor.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(monitor.obj)' or at ''; linking object as if no debug info
-glfw3.lib(vulkan.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(vulkan.obj)' or at 'C:\Users\ivo\Desktop\McProject\x64\Debug\glfw.pdb'; linking object as if no debug info
-glfw3.lib(window.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(window.obj)' or at 'C:\Users\ivo\Desktop\McProject\x64\Debug\glfw.pdb'; linking object as if no debug info
-glfw3.lib(win32_init.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_init.obj)' or at 'C:\Users\ivo\Desktop\McProject\x64\Debug\glfw.pdb'; linking object as if no debug info
-glfw3.lib(win32_joystick.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_joystick.obj)' or at 'C:\Users\ivo\Desktop\McProject\x64\Debug\glfw.pdb'; linking object as if no debug info
-glfw3.lib(win32_monitor.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_monitor.obj)' or at 'C:\Users\ivo\Desktop\McProject\x64\Debug\glfw.pdb'; linking object as if no debug info
-glfw3.lib(win32_time.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_time.obj)' or at ''; linking object as if no debug info
-glfw3.lib(win32_thread.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_thread.obj)' or at 'C:\Users\ivo\Desktop\McProject\x64\Debug\glfw.pdb'; linking object as if no debug info
-glfw3.lib(win32_window.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_window.obj)' or at 'C:\Users\ivo\Desktop\McProject\x64\Debug\glfw.pdb'; linking object as if no debug info
-glfw3.lib(wgl_context.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(wgl_context.obj)' or at 'C:\Users\ivo\Desktop\McProject\x64\Debug\glfw.pdb'; linking object as if no debug info
-glfw3.lib(egl_context.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(egl_context.obj)' or at 'C:\Users\ivo\Desktop\McProject\x64\Debug\glfw.pdb'; linking object as if no debug info
-glfw3.lib(osmesa_context.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(osmesa_context.obj)' or at 'C:\Users\ivo\Desktop\McProject\x64\Debug\glfw.pdb'; linking object as if no debug info
-  YoutubeOpenGL.vcxproj -> C:\Users\ivo\Desktop\McProject\x64\Debug\YoutubeOpenGL.exe
+LibNoise64.lib(modulebase.obj) : warning LNK4099: PDB '' was not found with 'LibNoise64.lib(modulebase.obj)' or at ''; linking object as if no debug info
+LibNoise64.lib(perlin.obj) : warning LNK4099: PDB 'LibNoise64.pdb' was not found with 'LibNoise64.lib(perlin.obj)' or at 'C:\Users\ivo\Desktop\Mc-Opengl-Optimized\x64\Debug\LibNoise64.pdb'; linking object as if no debug info
+LibNoise64.lib(noisegen.obj) : warning LNK4099: PDB '' was not found with 'LibNoise64.lib(noisegen.obj)' or at ''; linking object as if no debug info
+glfw3.lib(context.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(context.obj)' or at 'C:\Users\ivo\Desktop\Mc-Opengl-Optimized\x64\Debug\glfw.pdb'; linking object as if no debug info
+glfw3.lib(init.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(init.obj)' or at 'C:\Users\ivo\Desktop\Mc-Opengl-Optimized\x64\Debug\glfw.pdb'; linking object as if no debug info
+glfw3.lib(input.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(input.obj)' or at 'C:\Users\ivo\Desktop\Mc-Opengl-Optimized\x64\Debug\glfw.pdb'; linking object as if no debug info
+glfw3.lib(monitor.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(monitor.obj)' or at 'C:\Users\ivo\Desktop\Mc-Opengl-Optimized\x64\Debug\glfw.pdb'; linking object as if no debug info
+glfw3.lib(vulkan.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(vulkan.obj)' or at 'C:\Users\ivo\Desktop\Mc-Opengl-Optimized\x64\Debug\glfw.pdb'; linking object as if no debug info
+glfw3.lib(window.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(window.obj)' or at 'C:\Users\ivo\Desktop\Mc-Opengl-Optimized\x64\Debug\glfw.pdb'; linking object as if no debug info
+glfw3.lib(win32_init.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_init.obj)' or at 'C:\Users\ivo\Desktop\Mc-Opengl-Optimized\x64\Debug\glfw.pdb'; linking object as if no debug info
+glfw3.lib(win32_joystick.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_joystick.obj)' or at 'C:\Users\ivo\Desktop\Mc-Opengl-Optimized\x64\Debug\glfw.pdb'; linking object as if no debug info
+glfw3.lib(win32_monitor.obj) : warning LNK4099: PDB '' was not found with 'glfw3.lib(win32_monitor.obj)' or at ''; linking object as if no debug info
+glfw3.lib(win32_time.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_time.obj)' or at 'C:\Users\ivo\Desktop\Mc-Opengl-Optimized\x64\Debug\glfw.pdb'; linking object as if no debug info
+glfw3.lib(win32_thread.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_thread.obj)' or at 'C:\Users\ivo\Desktop\Mc-Opengl-Optimized\x64\Debug\glfw.pdb'; linking object as if no debug info
+glfw3.lib(win32_window.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(win32_window.obj)' or at 'C:\Users\ivo\Desktop\Mc-Opengl-Optimized\x64\Debug\glfw.pdb'; linking object as if no debug info
+glfw3.lib(wgl_context.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(wgl_context.obj)' or at 'C:\Users\ivo\Desktop\Mc-Opengl-Optimized\x64\Debug\glfw.pdb'; linking object as if no debug info
+glfw3.lib(egl_context.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(egl_context.obj)' or at 'C:\Users\ivo\Desktop\Mc-Opengl-Optimized\x64\Debug\glfw.pdb'; linking object as if no debug info
+glfw3.lib(osmesa_context.obj) : warning LNK4099: PDB 'glfw.pdb' was not found with 'glfw3.lib(osmesa_context.obj)' or at 'C:\Users\ivo\Desktop\Mc-Opengl-Optimized\x64\Debug\glfw.pdb'; linking object as if no debug info
+  YoutubeOpenGL.vcxproj -> C:\Users\ivo\Desktop\Mc-Opengl-Optimized\x64\Debug\YoutubeOpenGL.exe

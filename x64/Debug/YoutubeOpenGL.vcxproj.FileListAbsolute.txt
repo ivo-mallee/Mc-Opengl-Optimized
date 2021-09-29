@@ -2,3 +2,5 @@ D:\opengl projects\opengl-tutorials-main\YoutubeOpenGL 8 - Camera\x64\Debug\Yout
 D:\opengl projects\opengl-tutorials-main\YoutubeOpenGL 8 - Camera\x64\Debug\YoutubeOpenGL.pdb
 C:\Users\ivo\Desktop\McProject\x64\Debug\YoutubeOpenGL.exe
 C:\Users\ivo\Desktop\McProject\x64\Debug\YoutubeOpenGL.pdb
+C:\Users\ivo\Desktop\Mc-Opengl-Optimized\x64\Debug\YoutubeOpenGL.exe
+C:\Users\ivo\Desktop\Mc-Opengl-Optimized\x64\Debug\YoutubeOpenGL.pdb

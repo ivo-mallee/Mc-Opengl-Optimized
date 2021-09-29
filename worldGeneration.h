@@ -4,6 +4,9 @@
 
 noise::module::Perlin myModule;
 
+
+
+//inits the World Generator's noise function.
 void initGeneration() 
 {
 	myModule.SetSeed(22);
@@ -14,7 +17,7 @@ void initGeneration()
 	myModule.SetNoiseQuality(noise::QUALITY_STD);
 }
 
-
+//take an X,Y value and a Chunk Object and sets the height based on a noise map
 void NormalGeneration(int X,int Z, Chunk &TargetChunk)
 {
 
@@ -38,6 +41,7 @@ void NormalGeneration(int X,int Z, Chunk &TargetChunk)
 
 }
 
+//creates a simple Wave pattern usefull for debugging chunks
 void SinGeneration(int X, int Z, Chunk& TargetChunk)
 {
 	
@@ -65,7 +69,7 @@ void SinGeneration(int X, int Z, Chunk& TargetChunk)
 
 
 
-
+//empties the provided chunk and generates the terrain
 void GenerateWorld(Chunk &TargetChunk) {
 
 
@@ -89,6 +93,6 @@ void GenerateWorld(Chunk &TargetChunk) {
 		}
 	}
 	
-	TargetChunk.ReGenFlag = false;
-	TargetChunk.ReMeshFlag = true;
+	TargetChunk.ReGenFlag = false; //we have done the generation. this chunk no longer needs to be regenerated
+	TargetChunk.ReMeshFlag = true; //the chunk's data has changed. its in need of remeshing
 }

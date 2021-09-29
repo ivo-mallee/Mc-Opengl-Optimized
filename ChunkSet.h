@@ -6,7 +6,7 @@
 class ChunkSet {
 
 
-
+	//converts 4,8,4,4,4,8 bit value's into a singular integer
 	unsigned int  ConvertTo(unsigned char X, unsigned char Y, unsigned char Z, unsigned char TX, unsigned char TY, unsigned char LightLevel)
 	{
 		unsigned int T = Y | X << 8 | Z << 12 | TX << 16 | TY << 20 | LightLevel << 24;
@@ -16,8 +16,11 @@ class ChunkSet {
 
 
 		return T;
-	} //converts X,Y,Z,TextureX,textureY into single byte for shader
-	void DrawCube(unsigned char Xoffset, unsigned char Yoffset, unsigned char Zoffset, SIDES TEMP, int TextureId, GLuint(&indices)[300000], GLuint(&vertices)[1572864])
+	} 
+	
+	
+		//adds the vertices and indices to referenced arrays. takes a 4,8,4 bit value, and then a SIDES object which constains the sides to be added
+	void AddCube(unsigned char Xoffset, unsigned char Yoffset, unsigned char Zoffset, SIDES TEMP, int TextureId, GLuint(&indices)[300000], GLuint(&vertices)[1572864])
 	{
 		int MinX = 0;
 		int MinY = 0;
@@ -130,7 +133,7 @@ class ChunkSet {
 	}
 
 
-
+	//takes a 4,8,4 bit value and a reference to a chunk object. and then returns which sides contain a another cube
 	SIDES checkburen(int CX, int CY, int CZ, Chunk& TARGET)
 	{
 		int buren = 0;
@@ -159,7 +162,7 @@ class ChunkSet {
 		TEMP.NUMBER = buren;
 		return TEMP;
 	}
-public:             // Access specifier
+public:          
 	Chunk SET[32][32];
 
 
@@ -227,6 +230,8 @@ public:             // Access specifier
 		}
 	}
 
+
+	//finds a chunk's Neighbhors. (X,Y gives the location of a chunk in the chunk array. not in the world)
 	void FindChunkNeighbhors(int X, int Y)
 	{
 		int CurrentChunkX = SET[X][Y].ChunkX;
@@ -282,7 +287,7 @@ public:             // Access specifier
 
 	}
 
-
+	//gets the furthest away chunk for the specified positions. then returns the location of the chunk in the OutChunk variables
 	void GetFurthestChunk(int CurX,int CurY,int &OutChunkX, int& OutChunkY)
 	{
 		int DistanceMax = 0;
@@ -304,6 +309,7 @@ public:             // Access specifier
 		OutChunkY = FarChunkY;
 	}
 
+	//checks if a spot isnt already occupied by another chunk
 	bool IsChunkSpotavailable(int CX, int CY) 
 	{
 		
@@ -328,7 +334,7 @@ public:             // Access specifier
 
 
 
-
+	//moves a chunk's world position. and sets its ReGenFlag to True
 	void MoveChunk(int TargetChunkX,int TargetChunkY,int NEWX,int NEWY) 
 	{
 		this->SET[TargetChunkX][TargetChunkY].ChunkX = NEWX;
@@ -375,7 +381,7 @@ public:             // Access specifier
 						if (T.NUMBER < 6)
 						{
 
-							DrawCube(X, Y, Z, T, this->SET[ChunkX][ChunkY].ChunkData[X][Y][Z], indices, vertices);
+							AddCube(X, Y, Z, T, this->SET[ChunkX][ChunkY].ChunkData[X][Y][Z], indices, vertices);
 						}
 					}
 

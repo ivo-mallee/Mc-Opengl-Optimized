@@ -8,7 +8,7 @@ public:
 
 
 
-		bool LeftChunkNeighbhor = false;
+		bool LeftChunkNeighbhor = false; //variables for if a chunk has Neighbhors
 		bool RightChunkNeighbhor = false;
 		bool FrontChunkNeighbhor = false;
 		bool BackChunkNeighbhor = false;
@@ -30,7 +30,7 @@ public:
 
 
 
-
+		//fills the chunk's data with zero's and then adds a bottom floor and Y:0
 		void SetupChunk()
 		{
 			LeftChunkNeighbhor = false;
