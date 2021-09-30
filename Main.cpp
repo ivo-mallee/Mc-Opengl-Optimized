@@ -236,76 +236,78 @@ void GenerateSkyBoxCube(VBO& REFVBO, VAO& REFVAO, EBO& REFEBO, int &INDICOFFSET)
 	GLuint SkyBoxVertex[24];
 	GLuint SkyBoxIndices[36];
 
-
-	SkyBoxVertex[VertexOffset + 0] = WorldSet.ConvertTo(0 + 0, 0 + 0, 1 + 0, 0, 0, 1); //FRONT
-	SkyBoxVertex[VertexOffset + 1] = WorldSet.ConvertTo(1 + 0, 0 + 0, 1 + 0, 15, 0, 1);
-	SkyBoxVertex[VertexOffset + 2] = WorldSet.ConvertTo(0 + 0, 1 + 0, 1 + 0, 0, 15, 1);
-	SkyBoxVertex[VertexOffset + 3] = WorldSet.ConvertTo(1 + 0, 1 + 0, 1 + 0, 15, 15, 1);
-	SkyBoxIndices[INDICOffset + 0] = VertexOffset + 0;
-	SkyBoxIndices[INDICOffset + 1] = VertexOffset + 1;
-	SkyBoxIndices[INDICOffset + 2] = VertexOffset + 3;
-	SkyBoxIndices[INDICOffset + 3] = VertexOffset + 0;
-	SkyBoxIndices[INDICOffset + 4] = VertexOffset + 3;
-	SkyBoxIndices[INDICOffset + 5] = VertexOffset + 2;
-	VertexOffset += 4;
-	INDICOffset += 6;
-	SkyBoxVertex[VertexOffset + 0] = WorldSet.ConvertTo(0 + 0, 0 + 0, 0 + 0, 0, 0, 1); //bottom
-	SkyBoxVertex[VertexOffset + 1] = WorldSet.ConvertTo(1 + 0, 0 + 0, 0 + 0, 15, 0, 1);
-	SkyBoxVertex[VertexOffset + 2] = WorldSet.ConvertTo(0 + 0, 0 + 0, 1 + 0, 0, 15, 1);
-	SkyBoxVertex[VertexOffset + 3] = WorldSet.ConvertTo(1 + 0, 0 + 0, 1 + 0, 15, 15, 1);
-	SkyBoxIndices[INDICOffset + 0] = VertexOffset + 0;
-	SkyBoxIndices[INDICOffset + 1] = VertexOffset + 1;
-	SkyBoxIndices[INDICOffset + 2] = VertexOffset + 3;
-	SkyBoxIndices[INDICOffset + 3] = VertexOffset + 0;
-	SkyBoxIndices[INDICOffset + 4] = VertexOffset + 3;
-	SkyBoxIndices[INDICOffset + 5] = VertexOffset + 2;
-	VertexOffset += 4;
-	INDICOffset += 6;
-
-
-
-	SkyBoxVertex[VertexOffset + 0] = WorldSet.ConvertTo(0 + 0, 1 + 0, 0 + 0, 15, 15, 1); //BACK
-	SkyBoxVertex[VertexOffset + 1] = WorldSet.ConvertTo(1 + 0, 1 + 0, 0 + 0, 0, 15, 1);
-	SkyBoxVertex[VertexOffset + 2] = WorldSet.ConvertTo(0 + 0, 0 + 0, 0 + 0, 15, 0, 1);
-	SkyBoxVertex[VertexOffset + 3] = WorldSet.ConvertTo(1 + 0, 0 + 0, 0 + 0, 0, 0, 1);
-	SkyBoxIndices[INDICOffset + 0] = VertexOffset + 0;
-	SkyBoxIndices[INDICOffset + 1] = VertexOffset + 1;
-	SkyBoxIndices[INDICOffset + 2] = VertexOffset + 3;
-	SkyBoxIndices[INDICOffset + 3] = VertexOffset + 0;
-	SkyBoxIndices[INDICOffset + 4] = VertexOffset + 3;
-	SkyBoxIndices[INDICOffset + 5] = VertexOffset + 2;
-	VertexOffset += 4;
-	INDICOffset += 6;
-
-
-	SkyBoxVertex[VertexOffset + 0] = WorldSet.ConvertTo(1 + 0, 1 + 0, 0 + 0, 15, 15, 1); //TOP
-	SkyBoxVertex[VertexOffset + 1] = WorldSet.ConvertTo(0 + 0, 1 + 0, 0 + 0, 0, 15, 1);
-	SkyBoxVertex[VertexOffset + 2] = WorldSet.ConvertTo(1 + 0, 1 + 0, 1 + 0, 15, 0, 1);
-	SkyBoxVertex[VertexOffset + 3] = WorldSet.ConvertTo(0 + 0, 1 + 0, 1 + 0, 0, 0, 1);
-	SkyBoxIndices[INDICOffset + 0] = VertexOffset + 0;
-	SkyBoxIndices[INDICOffset + 1] = VertexOffset + 1;
-	SkyBoxIndices[INDICOffset + 2] = VertexOffset + 3;
-	SkyBoxIndices[INDICOffset + 3] = VertexOffset + 0;
-	SkyBoxIndices[INDICOffset + 4] = VertexOffset + 3;
-	SkyBoxIndices[INDICOffset + 5] = VertexOffset + 2;
-	VertexOffset += 4;
-	INDICOffset += 6;
-	SkyBoxVertex[VertexOffset + 0] = WorldSet.ConvertTo(1 + 0, 0 + 0, 1 + 0, 0, 0, 1); //right
-	SkyBoxVertex[VertexOffset + 1] = WorldSet.ConvertTo(1 + 0, 0 + 0, 0 + 0, 15, 0, 1);
-	SkyBoxVertex[VertexOffset + 2] = WorldSet.ConvertTo(1 + 0, 1 + 0, 1 + 0, 0, 15, 1);
-	SkyBoxVertex[VertexOffset + 3] = WorldSet.ConvertTo(1 + 0, 1 + 0, 0 + 0, 15, 15, 1);
-	SkyBoxIndices[INDICOffset + 0] = VertexOffset + 0;
-	SkyBoxIndices[INDICOffset + 1] = VertexOffset + 1;
-	SkyBoxIndices[INDICOffset + 2] = VertexOffset + 3;
-	SkyBoxIndices[INDICOffset + 3] = VertexOffset + 0;
-	SkyBoxIndices[INDICOffset + 4] = VertexOffset + 3;
-	SkyBoxIndices[INDICOffset + 5] = VertexOffset + 2;
-	VertexOffset += 4;
-	INDICOffset += 6;
-	SkyBoxVertex[VertexOffset + 0] = WorldSet.ConvertTo(0 + 0, 0 + 0, 1 + 0, 15, 0, 1); //(Left Still has problem with culling needs FIX)
-	SkyBoxVertex[VertexOffset + 1] = WorldSet.ConvertTo(0 + 0, 0 + 0, 0 + 0, 0, 0, 1);
+	
+	SkyBoxVertex[VertexOffset + 0] = WorldSet.ConvertTo(0 + 0, 0 + 0, 1 + 0, 15, 0, 1); //FRONT
+	SkyBoxVertex[VertexOffset + 1] = WorldSet.ConvertTo(1 + 0, 0 + 0, 1 + 0, 0, 0, 1);
 	SkyBoxVertex[VertexOffset + 2] = WorldSet.ConvertTo(0 + 0, 1 + 0, 1 + 0, 15, 15, 1);
-	SkyBoxVertex[VertexOffset + 3] = WorldSet.ConvertTo(0 + 0, 1 + 0, 0 + 0, 0, 15, 1);
+	SkyBoxVertex[VertexOffset + 3] = WorldSet.ConvertTo(1 + 0, 1 + 0, 1 + 0, 0, 15, 1);
+	SkyBoxIndices[INDICOffset + 0] = VertexOffset + 0;
+	SkyBoxIndices[INDICOffset + 1] = VertexOffset + 1;
+	SkyBoxIndices[INDICOffset + 2] = VertexOffset + 3;
+	SkyBoxIndices[INDICOffset + 3] = VertexOffset + 0;
+	SkyBoxIndices[INDICOffset + 4] = VertexOffset + 3;
+	SkyBoxIndices[INDICOffset + 5] = VertexOffset + 2;
+	VertexOffset += 4;
+	INDICOffset += 6;
+	
+
+	SkyBoxVertex[VertexOffset + 0] = WorldSet.ConvertTo(0 + 0, 0 + 0, 0 + 0, 15, 0, 1); //bottom
+	SkyBoxVertex[VertexOffset + 1] = WorldSet.ConvertTo(1 + 0, 0 + 0, 0 + 0, 0, 0, 1);
+	SkyBoxVertex[VertexOffset + 2] = WorldSet.ConvertTo(0 + 0, 0 + 0, 1 + 0, 15, 15, 1);
+	SkyBoxVertex[VertexOffset + 3] = WorldSet.ConvertTo(1 + 0, 0 + 0, 1 + 0, 0, 15, 1);
+	SkyBoxIndices[INDICOffset + 0] = VertexOffset + 0;
+	SkyBoxIndices[INDICOffset + 1] = VertexOffset + 1;
+	SkyBoxIndices[INDICOffset + 2] = VertexOffset + 3;
+	SkyBoxIndices[INDICOffset + 3] = VertexOffset + 0;
+	SkyBoxIndices[INDICOffset + 4] = VertexOffset + 3;
+	SkyBoxIndices[INDICOffset + 5] = VertexOffset + 2;
+	VertexOffset += 4;
+	INDICOffset += 6;
+
+
+
+	SkyBoxVertex[VertexOffset + 0] = WorldSet.ConvertTo(0 + 0, 1 + 0, 0 + 0, 0, 15, 1); //BACK
+	SkyBoxVertex[VertexOffset + 1] = WorldSet.ConvertTo(1 + 0, 1 + 0, 0 + 0, 15,15, 1);
+	SkyBoxVertex[VertexOffset + 2] = WorldSet.ConvertTo(0 + 0, 0 + 0, 0 + 0, 0, 0, 1);
+	SkyBoxVertex[VertexOffset + 3] = WorldSet.ConvertTo(1 + 0, 0 + 0, 0 + 0, 15, 0, 1);
+	SkyBoxIndices[INDICOffset + 0] = VertexOffset + 0;
+	SkyBoxIndices[INDICOffset + 1] = VertexOffset + 1;
+	SkyBoxIndices[INDICOffset + 2] = VertexOffset + 3;
+	SkyBoxIndices[INDICOffset + 3] = VertexOffset + 0;
+	SkyBoxIndices[INDICOffset + 4] = VertexOffset + 3;
+	SkyBoxIndices[INDICOffset + 5] = VertexOffset + 2;
+	VertexOffset += 4;
+	INDICOffset += 6;
+
+
+	SkyBoxVertex[VertexOffset + 0] = WorldSet.ConvertTo(1 + 0, 1 + 0, 0 + 0, 0, 15, 1); //TOP
+	SkyBoxVertex[VertexOffset + 1] = WorldSet.ConvertTo(0 + 0, 1 + 0, 0 + 0, 15,15, 1);
+	SkyBoxVertex[VertexOffset + 2] = WorldSet.ConvertTo(1 + 0, 1 + 0, 1 + 0, 0,  0, 1);
+	SkyBoxVertex[VertexOffset + 3] = WorldSet.ConvertTo(0 + 0, 1 + 0, 1 + 0, 15, 0, 1);
+	SkyBoxIndices[INDICOffset + 0] = VertexOffset + 0;
+	SkyBoxIndices[INDICOffset + 1] = VertexOffset + 1;
+	SkyBoxIndices[INDICOffset + 2] = VertexOffset + 3;
+	SkyBoxIndices[INDICOffset + 3] = VertexOffset + 0;
+	SkyBoxIndices[INDICOffset + 4] = VertexOffset + 3;
+	SkyBoxIndices[INDICOffset + 5] = VertexOffset + 2;
+	VertexOffset += 4;
+	INDICOffset += 6;
+	SkyBoxVertex[VertexOffset + 0] = WorldSet.ConvertTo(1 + 0, 0 + 0, 1 + 0, 15, 0, 1); //right
+	SkyBoxVertex[VertexOffset + 1] = WorldSet.ConvertTo(1 + 0, 0 + 0, 0 + 0, 0, 0, 1);
+	SkyBoxVertex[VertexOffset + 2] = WorldSet.ConvertTo(1 + 0, 1 + 0, 1 + 0, 15, 15, 1);
+	SkyBoxVertex[VertexOffset + 3] = WorldSet.ConvertTo(1 + 0, 1 + 0, 0 + 0, 0, 15, 1);
+	SkyBoxIndices[INDICOffset + 0] = VertexOffset + 0;
+	SkyBoxIndices[INDICOffset + 1] = VertexOffset + 1;
+	SkyBoxIndices[INDICOffset + 2] = VertexOffset + 3;
+	SkyBoxIndices[INDICOffset + 3] = VertexOffset + 0;
+	SkyBoxIndices[INDICOffset + 4] = VertexOffset + 3;
+	SkyBoxIndices[INDICOffset + 5] = VertexOffset + 2;
+	VertexOffset += 4;
+	INDICOffset += 6;
+	SkyBoxVertex[VertexOffset + 0] = WorldSet.ConvertTo(0 + 0, 0 + 0, 1 + 0, 0, 0, 1); //(Left Still has problem with culling needs FIX)
+	SkyBoxVertex[VertexOffset + 1] = WorldSet.ConvertTo(0 + 0, 0 + 0, 0 + 0, 15, 0, 1);
+	SkyBoxVertex[VertexOffset + 2] = WorldSet.ConvertTo(0 + 0, 1 + 0, 1 + 0, 0, 15, 1);
+	SkyBoxVertex[VertexOffset + 3] = WorldSet.ConvertTo(0 + 0, 1 + 0, 0 + 0, 15, 15, 1);
 	SkyBoxIndices[INDICOffset + 0] = VertexOffset + 0;
 	SkyBoxIndices[INDICOffset + 1] = VertexOffset + 1;
 	SkyBoxIndices[INDICOffset + 2] = VertexOffset + 3;
@@ -415,11 +417,11 @@ int main()
 	Texture textureAtlas(AtlasTextureDir.c_str(), GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
 	textureAtlas.texUnit(shaderProgram, "tex0", 0);
 
-	std::string GeckTextureDir = (fs::current_path().string() + "\\geck.png");
+	std::string SkyBoxTextureDir = (fs::current_path().string() + "\\cubemaps_skybox.png");
 
 
-	Texture GeckTex(GeckTextureDir.c_str(), GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
-	GeckTex.texUnit(shaderProgram, "tex0", 0);
+	Texture SkyBoxTexture(SkyBoxTextureDir.c_str(), GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
+	SkyBoxTexture.texUnit(shaderProgram, "tex0", 0);
 
 
 	
@@ -454,9 +456,6 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
 
-		glUniform1f(PlayerXArrayId, camera.Position.x);
-		glUniform1f(PlayerYArrayId, camera.Position.y);
-		glUniform1f(PlayerZArrayId, camera.Position.z);
 
 
 
@@ -477,14 +476,24 @@ int main()
 
 		// Binds texture so that is appears in rendering
 		//textureAtlas.Bind();
-		GeckTex.Bind();
+		
 		
 		// Draw primitives, number of indices, datatype of indices, index of indices
 		
 
 
-		glUniform1i(ObjInfoId, 0);
+		SkyBoxTexture.Bind();
+		SkyBoxVAO.Bind();
+		glUniform1f(PlayerXArrayId, camera.Position.x);
+		glUniform1f(PlayerYArrayId, camera.Position.y);
+		glUniform1f(PlayerZArrayId, camera.Position.z);
+		glUniform1i(ObjInfoId, 1);
+		glDrawElements(GL_TRIANGLES, SkyBoxOffsetINDC * 6 / sizeof(int), GL_UNSIGNED_INT, 0);
+		SkyBoxTexture.Unbind();
+
 		
+		glUniform1i(ObjInfoId, 0);
+		textureAtlas.Bind();
 
 		for (int i = 0; i < 1024; i++) {
 			glUniform1i(UniformChunkIdID, i);
@@ -492,12 +501,8 @@ int main()
 			glDrawElements(GL_TRIANGLES, IOffsetArray[i] * 6 / sizeof(int), GL_UNSIGNED_INT, 0);
 			VAO1[i].Unbind(); //unbind the VAO
 		}
-		
+		textureAtlas.Unbind();
 
-
-		SkyBoxVAO.Bind();
-		glUniform1i(ObjInfoId, 1);
-		glDrawElements(GL_TRIANGLES, SkyBoxOffsetINDC * 6 / sizeof(int), GL_UNSIGNED_INT, 0);
 
 
 

@@ -46,20 +46,28 @@ void main()
 	test.x = (DATA >> 24) % 256; //LightLevel
 
 	vec3 aPos;
-	
-
-
-	
-
-if (ObjInfo ==0) {	aPos = vec3(Values[0]*2,Values[1]*2,Values[2]*2); aPos = aPos + Offset*2;} //if its a normal cube
-if (ObjInfo ==1) {	aPos = vec3(Values[0]*2000,Values[1]*2000,Values[2]*2000); } //if its a skybox Cube
-
-	 if (PlayerX ==1 && PlayerY == 1 && PlayerZ ==1 && ObjInfo == 1) {aPos = vec3(535.0,352.0,533.0);}	
-
+	vec2 aTex;
 
 	
+	
 
-	vec2 aTex = vec2(0.0625*(Values[3]+1),0.0625*(Values[4]+1));
+if (ObjInfo ==0) {	
+aPos = vec3(Values[0]*2,Values[1]*2,Values[2]*2); 
+aPos = aPos + Offset*2;
+aTex = vec2(0.0625*(Values[3]+1),0.0625*(Values[4]+1));
+} //if its a normal cube
+
+if (ObjInfo ==1) {
+aPos = vec3(Values[0]*1600,Values[1]*1600,Values[2]*1600) + vec3(PlayerX-800,PlayerY-800,PlayerZ-800); 
+aTex = vec2(0.25*Values[3],0.333*Values[4]);
+} //if its a skybox Cube
+
+
+
+
+	
+
+ 
 	
 	
 	// Outputs the positions/coordinates of all vertices
